@@ -3,35 +3,26 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { VGType } from '../assets/variablesDeBase';
 import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequetesService {
-  configUrl = '../assets/config.json';
+  configUrl = 'http://localhost:80/suaf/public/listerTables';
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService
   ) {}
 
-  getRequetes(): Observable<VGType[]> {
-    return this.http.get<VGType[]>(this.configUrl).pipe(
-      tap(_ => this.log('Url(s) trouvées')),
-      catchError(this.handleError('getRequetes', []))
+  getRequete(): Observable<any> {
+    return this.http.get(this.configUrl).pipe(
+      tap(_ => this.log('Requête exécutée')),
+      catchError(this.handleError('getRequete', []))
     );
   }
 
-  getRequete(nomReq: string): Observable<VGType> {
-    const url = `${this.configUrl}/?id=${nomReq}`;
-    return this.http.get<VGType>(url)
-    .pipe(
-      tap(_ => this.log(`La requête ${nomReq} a été trouvée.`),
-      catchError(this.handleError<VGType>(`Erreur dans la recherche de la requête ${nomReq}`))
-    ));
-  }
   /**
    * Handle Http operation that failed.
    * Let the app continue.

@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { RequetesComponent } from './requetes/requetes.component';
+import { ExtractTablesComponent } from './extract-tables/extract-tables.component';
 import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
-  declarations: [AppComponent, RequetesComponent, MessagesComponent],
+  declarations: [AppComponent, ExtractTablesComponent, MessagesComponent],
   imports: [BrowserModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent]
