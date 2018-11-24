@@ -1,9 +1,31 @@
-<h2>Extraction de l'ensemble des tables</h2>
-
-<!--<ul class="requetes">
-  <li *ngFor="let requete of requetes">
-      <span>{{requete.nomReq}}</span> {{requete.req}}
+<h2>Listage du contenu des tables</h2>
+<ul>
+  <p>Table Domaines</p>
+  <li *ngFor="let domaine of domaines">
+    <span>{{ domaine.id }}</span> {{ domaine.domaine }}
   </li>
-</ul>-->
-<p>{{ resultat | json}}</p>
+</ul>
+
+<ul>
+  <p>Table SousDomaines</p>
+  <li *ngFor="let sousDomaine of sousDomaines">
+    <span>{{ sousDomaine.id }}</span> {{ sousDomaine.sousDomaine }}
+  </li>
+</ul>
+
+<ul>
+  <p>Table Natures</p>
+  <li *ngFor="let nature of natures">
+    <span>{{ nature.id }}</span> {{ nature.nature }}
+  </li>
+</ul>
+<ul>
+  <p>Table Statuts</p>
+  <li *ngFor="let statut of statuts">
+    <span>{{ statut.id }}</span> {{ statut.statut }}
+  </li>
+</ul>
+
+
+
 <app-messages></app-messages>

@@ -3,21 +3,21 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { MessageService } from './message.service';
+import { MessageService } from '../message.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequetesService {
-  configUrl = 'http://localhost:80/suaf/public/listerTables';
+  listerTablesUrl = 'http://localhost:80/suaf/public/listerTables';
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService
   ) {}
 
-  getRequete(): Observable<any> {
-    return this.http.get(this.configUrl).pipe(
+  getToutesTables(): Observable<any> {
+    return this.http.get(this.listerTablesUrl).pipe(
       tap(_ => this.log('Requête exécutée')),
       catchError(this.handleError('getRequete', []))
     );
