@@ -1,0 +1,9 @@
+<h2>Listage du contenu de la table principale</h2>
+<ul>
+  <li *ngFor="let sujet of sujetsComplets">
+    <span>{{ sujet.id }}</span> {{ sujet.domaine }} {{ sujet.objet}} {{ sujet.inscription['date'] }}
+    {{ sujet.qui }} {{ sujet.nature }} {{ sujet.domaine }} {{ sujet.sousDomaine }}
+{{ sujet.statut }} {{ sujet.dateVersion['date'] }} {{ sujet.contenuVersion }}
+    {{ sujet.porteurVersion }} {{ sujet.delaiVersion }}
+  </li>
+</ul>

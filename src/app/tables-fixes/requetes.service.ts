@@ -6,11 +6,9 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Domaine, SousDomaine, Nature, Statut } from '../../assets/structure';
 import { MessageService } from '../message.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class RequetesService {
-  listerTablesUrl = 'http://localhost:80/suaf/public/listerTables';
+  listerTablesUrl = 'http://localhost:80/suaf/public/listerTablesFixes';
   domaines: Domaine[];
   sousDomaines: SousDomaine[];
   natures: Nature[];
@@ -22,18 +20,14 @@ export class RequetesService {
   ) {}
 
   getToutesTables$(): Observable<any> {
-    return this.http.get(this.listerTablesUrl).pipe(
-      map(res => {
+    return this.http.get(this.listerTablesUrl).pipe( map(res => {
         this.domaines = res['domaines'];
         this.sousDomaines = res['sousDomaines'];
         this.natures = res['natures'];
         this.statuts = res['statuts'];
-      }),
-      tap(_ => {
-        this.log('Requête exécutée');
-      }),
-      catchError(this.handleError('getRequete', []))
-    );
+      }), tap(_ => {
+        this.log('Requête listerTablesUrl exécutée');
+      }), catchError(this.handleError('getToutesTables$', [])) );
   }
 
   /**

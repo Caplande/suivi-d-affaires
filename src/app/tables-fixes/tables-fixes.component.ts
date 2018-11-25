@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
 
 import { RequetesService } from './requetes.service';
 import { Domaine } from '../../assets/structure';
@@ -7,12 +6,12 @@ import { SousDomaine } from '../../assets/structure';
 import { Nature } from '../../assets/structure';
 import { Statut } from '../../assets/structure';
 @Component({
-  selector: 'app-requetes',
-  templateUrl: './tables-de-base.component.html',
+  selector: 'app-tables-fixes',
+  templateUrl: './tables-fixes.component.html',
   providers: [RequetesService],
-  styleUrls: ['./tables-de-base.component.css']
+  styleUrls: ['./tables-fixes.component.css']
 })
-export class TablesDeBaseComponent implements OnInit {
+export class TablesFixesComponent implements OnInit {
   domaines: Domaine[];
   sousDomaines: SousDomaine[];
   natures: Nature[];
