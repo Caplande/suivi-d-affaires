@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
+import { Domaine, SousDomaine, Nature, Statut } from '../../assets/structure';
 import { MessageService } from '../message.service';
 
 @Injectable({
@@ -10,15 +11,27 @@ import { MessageService } from '../message.service';
 })
 export class RequetesService {
   listerTablesUrl = 'http://localhost:80/suaf/public/listerTables';
+  domaines: Domaine[];
+  sousDomaines: SousDomaine[];
+  natures: Nature[];
+  statuts: Statut[];
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService
   ) {}
 
-  getToutesTables(): Observable<any> {
+  getToutesTables$(): Observable<any> {
     return this.http.get(this.listerTablesUrl).pipe(
-      tap(_ => this.log('Requête exécutée')),
+      map(res => {
+        this.domaines = res['domaines'];
+        this.sousDomaines = res['sousDomaines'];
+        this.natures = res['natures'];
+        this.statuts = res['statuts'];
+      }),
+      tap(_ => {
+        this.log('Requête exécutée');
+      }),
       catchError(this.handleError('getRequete', []))
     );
   }
@@ -40,6 +53,20 @@ export class RequetesService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  }
+
+  getDomaines(): Domaine[] {
+    return this.domaines;
+  }
+
+  getSousDomaines(): SousDomaine[] {
+    return this.sousDomaines;
+  }
+  getNatures(): Nature[] {
+    return this.natures;
+  }
+  getStatuts(): Statut[] {
+    return this.statuts;
   }
 
   /** Log a RequetesService message with the MessageService */

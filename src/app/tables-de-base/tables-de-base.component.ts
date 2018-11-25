@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 import { RequetesService } from './requetes.service';
 import { Domaine } from '../../assets/structure';
@@ -7,11 +8,11 @@ import { Nature } from '../../assets/structure';
 import { Statut } from '../../assets/structure';
 @Component({
   selector: 'app-requetes',
-  templateUrl: './extract-tables.component.html',
+  templateUrl: './tables-de-base.component.html',
   providers: [RequetesService],
-  styleUrls: ['./extract-tables.component.css']
+  styleUrls: ['./tables-de-base.component.css']
 })
-export class ExtractTablesComponent implements OnInit {
+export class TablesDeBaseComponent implements OnInit {
   domaines: Domaine[];
   sousDomaines: SousDomaine[];
   natures: Nature[];
@@ -24,11 +25,14 @@ export class ExtractTablesComponent implements OnInit {
   }
 
   getTables() {
-    this.requetesService.getToutesTables().subscribe(res => {
-      this.domaines = res.domaines;
-      this.sousDomaines = res.sousDomaines;
-      this.natures = res.natures;
-      this.statuts = res.statuts;
-    });
-  }
+    this.requetesService.getToutesTables$().subscribe(_ => {
+      this.domaines = this.requetesService.getDomaines();
+      this.sousDomaines = this.requetesService.getSousDomaines();
+      this.natures = this.requetesService.getNatures();
+      this.statuts = this.requetesService.getStatuts();
+  }); }
+
+
+
+
 }
