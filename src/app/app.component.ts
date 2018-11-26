@@ -7,5 +7,5 @@ import { titreOnglet } from '../assets/structure';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'projet front end';
+  title = titreOnglet;
 }
