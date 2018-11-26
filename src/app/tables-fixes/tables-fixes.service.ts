@@ -7,7 +7,7 @@ import { Domaine, SousDomaine, Nature, Statut } from '../../assets/structure';
 import { MessageService } from '../message.service';
 
 @Injectable({ providedIn: 'root' })
-export class RequetesService {
+export class TablesFixesService {
   listerTablesUrl = 'http://localhost:80/suaf/public/listerTablesFixes';
   domaines: Domaine[];
   sousDomaines: SousDomaine[];

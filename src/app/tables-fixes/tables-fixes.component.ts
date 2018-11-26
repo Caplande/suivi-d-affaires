@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { RequetesService } from './requetes.service';
+import { TablesFixesService } from './tables-fixes.service';
 import { Domaine } from '../../assets/structure';
 import { SousDomaine } from '../../assets/structure';
 import { Nature } from '../../assets/structure';
@@ -8,7 +8,7 @@ import { Statut } from '../../assets/structure';
 @Component({
   selector: 'app-tables-fixes',
   templateUrl: './tables-fixes.component.html',
-  providers: [RequetesService],
+  providers: [TablesFixesService],
   styleUrls: ['./tables-fixes.component.css']
 })
 export class TablesFixesComponent implements OnInit {
@@ -17,21 +17,18 @@ export class TablesFixesComponent implements OnInit {
   natures: Nature[];
   statuts: Statut[];
 
-  constructor(private requetesService: RequetesService) {}
+  constructor(private tablesFixesService: TablesFixesService) {}
 
   ngOnInit() {
     this.getTables();
   }
 
   getTables() {
-    this.requetesService.getToutesTables$().subscribe(_ => {
-      this.domaines = this.requetesService.getDomaines();
-      this.sousDomaines = this.requetesService.getSousDomaines();
-      this.natures = this.requetesService.getNatures();
-      this.statuts = this.requetesService.getStatuts();
-  }); }
-
-
-
-
+    this.tablesFixesService.getToutesTables$().subscribe(_ => {
+      this.domaines = this.tablesFixesService.getDomaines();
+      this.sousDomaines = this.tablesFixesService.getSousDomaines();
+      this.natures = this.tablesFixesService.getNatures();
+      this.statuts = this.tablesFixesService.getStatuts();
+    });
+  }
 }
