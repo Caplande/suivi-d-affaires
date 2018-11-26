@@ -31,3 +31,7 @@ export class SujetComplet {
   porteurVersion: string;
   delaiVersion: string;
 }
+
+export const titreForm =
+  "Gestion des comptes-rendus du Conseil Syndical de la copropriété Monica";
+export const titreOnglet = "Gestion de comptes-rendus";
