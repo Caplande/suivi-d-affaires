@@ -12,18 +12,14 @@ import { AppComponent } from './app.component';
 import { TablesFixesComponent } from './tables-fixes/tables-fixes.component';
 import { MessagesComponent } from './messages/messages.component';
 import { TablePrincipaleComponent } from './table-principale/table-principale.component';
-import { PresentationComponent } from './presentation/presentation.component';
+import { VoirComponent } from './voir/voir.component';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
-  { path: 'presentation', component: PresentationComponent },
-  { path: 'presentation1', component: PresentationComponent },
-  {
-    path: 'presentation2',
-    component: PresentationComponent,
-    data: { title: 'Liste des tables' }
-  },
+  { path: 'Voir', component: VoirComponent },
+  { path: 'Editer', component: VoirComponent },
+  { path: 'Corriger', component: VoirComponent },
   {
     path: '',
     redirectTo: '/listerTables',
@@ -38,7 +34,7 @@ const appRoutes: Routes = [
     TablesFixesComponent,
     MessagesComponent,
     TablePrincipaleComponent,
-    PresentationComponent,
+    VoirComponent,
     PageNotFoundComponent
   ],
   imports: [

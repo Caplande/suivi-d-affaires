@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+// import { Observable } from 'rxjs';
 import { interval } from 'rxjs';
+import { RouterOutlet } from '@angular/router';
+// import { slideInAnimation } from './animations';
+
+
 
 import { titreOnglet } from '../assets/structure';
 import { DateHeureService } from './date-heure.service';

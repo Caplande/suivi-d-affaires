@@ -1,9 +1,21 @@
 <div class="container-fluid">
-<div class="row bg-dark">
+  <div class="row bg-dark">
     <h3 class="col-8 text-left align-middle  text-primary p-3">Suivi d'opérations et comptes-rendus associés</h3>
-<h6 class="col-4 text-right align-middle text-white-50 p-4">{{ dateHeure$ | date :'EEEE d MMMM y HH:mm:ss' :'+0100'
-  :'fr' }} </h6>
+    <h6 class="col-4 text-right align-middle text-white-50 p-4">{{ dateHeure$ | date :'EEEE d MMMM y HH:mm:ss' :'+0100'
+      :'fr' }} </h6>
   </div>
-
-
+  <div class="row">
+    <nav class="pl-2">
+      <a routerLink="/voir" routerLinkActive="active">Voir</a>
+      <a routerLink="/Editer" routerLinkActive="active">Editer</a>
+      <a routerLink="/Corriger" routerLinkActive="active">Corriger</a>
+      <a routerLink="/login" routerLinkActive="inactive">Login</a>
+      <!--      <a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>-->
+    </nav>
+  </div>
+</div>
+<div class="container-fluid pt-2">
+  <div class="row">
+    <router-outlet></router-outlet>
+  </div>
 </div>
