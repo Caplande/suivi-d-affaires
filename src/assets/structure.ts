@@ -33,5 +33,5 @@ export class SujetComplet {
 }
 
 export const titreForm =
-  "Gestion des comptes-rendus du Conseil Syndical de la copropriété Monica";
-export const titreOnglet = "Gestion de comptes-rendus";
+  'Gestion des comptes-rendus du Conseil Syndical de la copropriété Monica';
+export const titreOnglet = 'Gestion de comptes-rendus';

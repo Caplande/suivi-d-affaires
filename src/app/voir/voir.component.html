@@ -1,3 +1,34 @@
-<p>
-  voir works!
-</p>
+<div class="container-fluid">
+  <form #voirForm="ngForm">
+    <div class="row mt-3 form-group pl-2">
+      <div *ngIf="valInitiales[2].nature" class="mr-3">
+        <label for="nature">Nature</label>
+        <select class="form-control" id="nature" required [(ngModel)]="valInitiales[2].id" name="nature">
+          <option *ngFor="let nat of natures" [value]="nat.id">{{nat.nature}}</option>
+        </select>
+      </div>
+
+      <div *ngIf="valInitiales[3].statut" class="mr-3">
+        <label for="statut">Statut</label>
+        <select class="form-control" id="statut" required [(ngModel)]="valInitiales[3].id" name="statut">
+          <option *ngFor="let stat of statuts" [value]="stat.id">{{stat.statut}}</option>
+        </select>
+      </div>
+
+      <div *ngIf="valInitiales[0].domaine" class="mr-3">
+        <label for="domaine">Domaine</label>
+        <select class="form-control" id="domaine" required [(ngModel)]="valInitiales[0].id" name="domaine">
+          <option *ngFor="let dom of domaines" [value]="dom.id">{{dom.domaine}}</option>
+        </select>
+      </div>
+
+      <div *ngIf="valInitiales[1].sousDomaine" class="mr-3">
+        <label for="sousDomaine">Sous-domaine</label>
+        <select class="form-control" id="sousDomaine" required [(ngModel)]="valInitiales[1].id" name="sousDomaine">
+          <option *ngFor="let sous of sousDomaines" [value]="sous.id">{{sous.sousDomaine}}</option>
+        </select>
+      </div>
+    </div>
+  </form>
+
+</div>
