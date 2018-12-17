@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { TablesFixesService } from './tables-fixes.service';
+import { TablesFixesService } from '../tables-fixes.service';
 import { Domaine } from '../../assets/structure';
 import { SousDomaine } from '../../assets/structure';
 import { Nature } from '../../assets/structure';
@@ -8,7 +8,7 @@ import { Statut } from '../../assets/structure';
 @Component({
   selector: 'app-tables-fixes',
   templateUrl: './tables-fixes.component.html',
-  providers: [TablesFixesService],
+//  providers: [TablesFixesService],
   styleUrls: ['./tables-fixes.component.css']
 })
 export class TablesFixesComponent implements OnInit {

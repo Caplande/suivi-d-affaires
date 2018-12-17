@@ -12,20 +12,23 @@ export class Nature {
   id: number;
   nature: string;
 }
-
 export class Statut {
   id: number;
   statut: string;
 }
-export class SujetComplet {
+export class Objet {
   id: number;
   objet: string;
+}
+export class SujetComplet {
+  id: number;
+  objet: Objet;
   inscription: Date;
   qui: string;
-  nature: string;
-  domaine: string;
-  sousDomaine: string;
-  statut: string;
+  nature: Nature;
+  domaine: Domaine;
+  sousDomaine: SousDomaine;
+  statut: Statut;
   dateVersion: Date;
   contenuVersion: string;
   porteurVersion: string;

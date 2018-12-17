@@ -1,25 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { RequetePrincipaleService } from './requete-principale.service';
-import { SujetComplet } from '../../assets/structure';
+import { TablePrincipaleService } from '../table-principale.service';
+import { SujetComplet, Objet } from '../../assets/structure';
 
 @Component({
   selector: 'app-table-principale',
   templateUrl: './table-principale.component.html',
-  providers: [RequetePrincipaleService],
+  providers: [TablePrincipaleService],
   styleUrls: ['./table-principale.component.css']
 })
 export class TablePrincipaleComponent implements OnInit {
   sujetsComplets: SujetComplet[];
+  objets: Objet[];
 
-  constructor(private requetePrincipaleService: RequetePrincipaleService) {}
+  constructor(private tablePrincipaleService: TablePrincipaleService) {}
 
   ngOnInit() {
     this.getTable();
   }
 
   getTable() {
-    this.requetePrincipaleService.getTablePrincipale$().subscribe(_ => {
-      this.sujetsComplets = this.requetePrincipaleService.getSujetsComplets();
+    this.tablePrincipaleService.getTablePrincipale$().subscribe(_ => {
+      this.sujetsComplets = this.tablePrincipaleService.getSujetsComplets();
+      this.objets = this.tablePrincipaleService.getObjets();
     });
   }
 }

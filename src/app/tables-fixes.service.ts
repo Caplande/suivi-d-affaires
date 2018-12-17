@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Domaine, SousDomaine, Nature, Statut } from '../../assets/structure';
-import { MessageService } from '../message.service';
+import { Domaine, SousDomaine, Nature, Statut } from '../assets/structure';
+import { MessageService } from './message.service';
 
 @Injectable({ providedIn: 'root' })
 export class TablesFixesService {
