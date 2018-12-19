@@ -15,17 +15,16 @@ import {
 })
 export class VoirComponent implements OnInit {
   objets: Objet[];
+  objetsC: string[];
   domaines: Domaine[];
+  domainesC: string[];
   sousDomaines: SousDomaine[];
+  sousDomainesC: string[];
   natures: Nature[];
+  naturesC: string[];
   statuts: Statut[];
-  valInitiales = [
-    new Objet(),
-    new Domaine(),
-    new SousDomaine(),
-    new Nature(),
-    new Statut()
-  ];
+  statutsC: string[];
+  valCouranteControles = [''];
 
   constructor(
     private tablesFixesService: TablesFixesService,
@@ -39,18 +38,27 @@ export class VoirComponent implements OnInit {
   getValeurs() {
     this.tablePrincipaleService.getTablePrincipale$().subscribe(_ => {
       this.objets = this.tablePrincipaleService.getObjets();
- //     console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAA', this.valInitiales);
-      this.valInitiales[0] = this.objets[0];
+      this.objetsC = this.objets.map(objet => objet.objet);
+      this.valCouranteControles[0] = this.objetsC[0];
       this.tablesFixesService.getToutesTables$().subscribe(() => {
         this.domaines = this.tablesFixesService.getDomaines();
+        this.domainesC = this.domaines.map(domaine => domaine.domaine);
+        this.valCouranteControles.push(this.domainesC[0]);
+
         this.sousDomaines = this.tablesFixesService.getSousDomaines();
+        this.sousDomainesC = this.sousDomaines.map(
+          sousDomaine => sousDomaine.sousDomaine
+        );
+        this.valCouranteControles.push(this.sousDomainesC[0]);
+
         this.natures = this.tablesFixesService.getNatures();
+        this.naturesC = this.natures.map(nature => nature.nature);
+        this.valCouranteControles.push(this.naturesC[0]);
+
         this.statuts = this.tablesFixesService.getStatuts();
-        this.valInitiales[1] = this.domaines[0];
-        this.valInitiales[2] = this.sousDomaines[0];
-        this.valInitiales[3] = this.natures[0];
-        this.valInitiales[4] = this.statuts[0];
+        this.statutsC = this.statuts.map(statut => statut.statut);
+        this.valCouranteControles.push(this.statutsC[0]);
       });
     });
   }
-}
+ }

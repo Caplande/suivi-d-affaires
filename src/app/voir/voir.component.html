@@ -1,39 +1,40 @@
+<!--<div>TODO: remove valCouranteControles[0] {{valCouranteControles[0]}}</div>
+<div>TODO: remove this.objets {{objets | json}}</div>-->
 <div class="container-fluid">
   <form #voirForm="ngForm">
     <div class="row mt-3 form-group">
-
-      <div *ngIf="valInitiales[0].objet" class="mr-3 ml-2">
+      <div *ngIf="valCouranteControles[0]" class="mr-3 ml-2">
         <label for="objet">Objet</label>
-        <select class="form-control" id="objet" required [(ngModel)]="valInitiales[0].id" name="objet">
-          <option *ngFor="let obj of objets" [value]="obj.id">{{obj.objet}}</option>
+        <select class="form-control" id="objet" required [(ngModel)]="valCouranteControles[0]" name="objet">
+          <option *ngFor="let obj of objetsC" [value]="obj">{{obj}}</option>
         </select>
       </div>
 
-      <div *ngIf="valInitiales[3].nature" class="mr-3">
+     <div *ngIf="valCouranteControles[3]" class="mr-3">
         <label for="nature">Nature</label>
-        <select class="form-control" id="nature" required [(ngModel)]="valInitiales[3].id" name="nature">
-          <option *ngFor="let nat of natures" [value]="nat.id">{{nat.nature}}</option>
+        <select class="form-control" id="nature" required [(ngModel)]="valCouranteControles[3]" name="nature">
+          <option *ngFor="let nat of naturesC" [value]="nat">{{nat}}</option>
         </select>
       </div>
 
-      <div *ngIf="valInitiales[4].statut" class="mr-3">
+     <div *ngIf="valCouranteControles[4]" class="mr-3">
         <label for="statut">Statut</label>
-        <select class="form-control" id="statut" required [(ngModel)]="valInitiales[4].id" name="statut">
-          <option *ngFor="let stat of statuts" [value]="stat.id">{{stat.statut}}</option>
+        <select class="form-control" id="statut" required [(ngModel)]="valCouranteControles[4]" name="statut">
+          <option *ngFor="let stat of statutsC" [value]="stat">{{stat}}</option>
         </select>
       </div>
 
-      <div *ngIf="valInitiales[1].domaine" class="mr-3">
+      <div *ngIf="valCouranteControles[1]" class="mr-3">
         <label for="domaine">Domaine</label>
-        <select class="form-control" id="domaine" required [(ngModel)]="valInitiales[1].id" name="domaine">
-          <option *ngFor="let dom of domaines" [value]="dom.id">{{dom.domaine}}</option>
+        <select class="form-control" id="domaine" required [(ngModel)]="valCouranteControles[1]" name="domaine">
+          <option *ngFor="let dom of domainesC" [value]="dom">{{dom}}</option>
         </select>
       </div>
 
-      <div *ngIf="valInitiales[2].sousDomaine" class="mr-3">
+      <div *ngIf="valCouranteControles[2]" class="mr-3">
         <label for="sousDomaine">Sous-domaine</label>
-        <select class="form-control" id="sousDomaine" required [(ngModel)]="valInitiales[2].id" name="sousDomaine">
-          <option *ngFor="let sous of sousDomaines" [value]="sous.id">{{sous.sousDomaine}}</option>
+        <select class="form-control" id="sousDomaine" required [(ngModel)]="valCouranteControles[2]" name="sousDomaine">
+          <option *ngFor="let sous of sousDomainesC" [value]="sous">{{sous}}</option>
         </select>
       </div>
     </div>
