@@ -3,12 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { SujetComplet, Objet } from '../assets/structure';
+import { Sujet, SujetComplet, Objet } from '../assets/structure';
 import { MessageService } from './message.service';
 
 @Injectable({ providedIn: 'root' })
 export class TablePrincipaleService {
-  listerTableUrl = 'http://localhost:80/suaf/public/listerTablePrincipale';
+  listerTableUrl = 'http://localhost:80/suaf/public/listerBase';
+  sujets: Sujet[];
   sujetsComplets: SujetComplet[] = [];
   objets: Objet[] = [];
 
@@ -20,19 +21,24 @@ export class TablePrincipaleService {
   getTablePrincipale$(): Observable<any> {
     return this.http.get(this.listerTableUrl).pipe(
       tap(res => {
-        // tslint:disable-next-line:forin
-        // Extraction de l'ensemble des champs de la table principale
-        // tslint:disable-next-line:forin
-        for (const element in res['sujets']) {
-          this.sujetsComplets.push(res['sujets'][element]);
-        }
- //       console.log('SSSSSSSSSSSSSSSSSSSSSSS', this.sujetsComplets);
-        // Extraction du champ "objet"
-        // tslint:disable-next-line:forin
-        for (const element in res['objets']) {
-          this.objets.push(res['objets'][element]);
-        }
-  //      console.log('OOOOOOOOOOOOOOOOOOOOOOO', this.objets);
+        this.sujets = JSON.parse(JSON.stringify(res['sujets']));
+        this.sujetsComplets = JSON.parse(JSON.stringify(res['versions']));
+        this.objets = JSON.parse(JSON.stringify(res['objets']));
+        console.log(
+          '********** sujets ****************',
+          this.sujets,
+          '**************************'
+        );
+        console.log(
+          '****** sujetsComplets ************',
+          this.sujetsComplets,
+          '**************************'
+        );
+        console.log(
+          '*********** objets ***************',
+          this.objets,
+          '**************************'
+        );
         this.log('Requête listerTableUrl exécutée');
       }),
       catchError(this.handleError('getTablePrincipale$', []))
@@ -56,6 +62,10 @@ export class TablePrincipaleService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  }
+
+  getSujets(): Sujet[] {
+    return this.sujets;
   }
 
   getSujetsComplets(): SujetComplet[] {

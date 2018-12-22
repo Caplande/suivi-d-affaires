@@ -3,37 +3,38 @@
 <div class="container-fluid">
   <form #voirForm="ngForm">
     <div class="row mt-3 form-group">
-      <div *ngIf="valCouranteControles[0]" class="mr-3 ml-2">
+      <div *ngIf="valeursCourantes.objet" class="mr-3 ml-2">
         <label for="objet">Objet</label>
-        <select class="form-control" id="objet" required [(ngModel)]="valCouranteControles[0]" name="objet">
+        <select class="form-control" id="objet" [(ngModel)]="valeursCourantes.objet" (ngModelChange)="synchroObjet('objet')" required name=" objet">
           <option *ngFor="let obj of objetsC" [value]="obj">{{obj}}</option>
         </select>
       </div>
 
-     <div *ngIf="valCouranteControles[3]" class="mr-3">
+      <div *ngIf="valeursCourantes.nature" class="mr-3">
         <label for="nature">Nature</label>
-        <select class="form-control" id="nature" required [(ngModel)]="valCouranteControles[3]" name="nature">
+        <select class="form-control" id="nature" [(ngModel)]="valeursCourantes.nature" (ngModelChange)="synchroObjet('nature')" required name="nature">
           <option *ngFor="let nat of naturesC" [value]="nat">{{nat}}</option>
         </select>
       </div>
 
-     <div *ngIf="valCouranteControles[4]" class="mr-3">
+      <div *ngIf="valeursCourantes.statut" class="mr-3">
         <label for="statut">Statut</label>
-        <select class="form-control" id="statut" required [(ngModel)]="valCouranteControles[4]" name="statut">
+        <select class="form-control" id="statut" [(ngModel)]="valeursCourantes.statut" (change)="synchroObjet('statut')" required name="statut">
           <option *ngFor="let stat of statutsC" [value]="stat">{{stat}}</option>
         </select>
       </div>
 
-      <div *ngIf="valCouranteControles[1]" class="mr-3">
+      <div *ngIf="valeursCourantes.domaine" class="mr-3">
         <label for="domaine">Domaine</label>
-        <select class="form-control" id="domaine" required [(ngModel)]="valCouranteControles[1]" name="domaine">
+        <select class="form-control" id="domaine" [(ngModel)]="valeursCourantes.domaine" (change)="synchroObjet('domaine')" required name="domaine">
           <option *ngFor="let dom of domainesC" [value]="dom">{{dom}}</option>
         </select>
       </div>
 
-      <div *ngIf="valCouranteControles[2]" class="mr-3">
+      <div *ngIf="valeursCourantes.sousDomaine" class="mr-3">
         <label for="sousDomaine">Sous-domaine</label>
-        <select class="form-control" id="sousDomaine" required [(ngModel)]="valCouranteControles[2]" name="sousDomaine">
+        <select class="form-control" id="sousDomaine" [(ngModel)]="valeursCourantes.sousDomaine" (change)="synchroObjet('sousDomaine')"
+          required name="sousDomaine">
           <option *ngFor="let sous of sousDomainesC" [value]="sous">{{sous}}</option>
         </select>
       </div>
